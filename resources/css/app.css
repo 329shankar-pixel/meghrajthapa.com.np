@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Source+Serif+4:wght@600;700;800&family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Work Sans', 'Inter', 'Noto Sans Devanagari', 'Hind', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-display: 'Source Serif 4', 'Noto Sans Devanagari', ui-serif, Georgia, serif;
+    --font-nepali: 'Noto Sans Devanagari', 'Hind', ui-sans-serif, system-ui, sans-serif;
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-congress-green: #16803c;
+    --color-congress-green-deep: #006400;
+    --color-congress-red: #ba002e;
+    --color-congress-white: #FFFFFF;
+    --color-congress-surface: #fcf9f8;
+    --color-congress-surface-muted: #f0eded;
+    --color-congress-outline: #becab6;
+}
+
+/* Political Theme Class */
+.theme-political {
+    --primary: oklch(0.5 0.2 25);
+    --primary-foreground: oklch(0.985 0 0);
+    --ring: oklch(0.5 0.2 25);
+    --sidebar-primary: oklch(0.5 0.2 25);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+}
+
+.dark .theme-political {
+    --primary: oklch(0.985 0 0);
+    /* Keep dark mode primary mainly white or specific color */
+    /* ... or arguably political theme in dark mode should also be red? */
+    /* Let's stick to the previous :root behavior for political theme */
+}
+
+/* Default Theme (Monochrome/Dashboard) */
+:root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0 0 0);
+    --primary-foreground: oklch(1 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.9 0 0);
+    --accent-foreground: oklch(0 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0 0 0);
+    --chart-1: oklch(0 0 0);
+    --chart-2: oklch(0.3 0 0);
+    --chart-3: oklch(0.5 0 0);
+    --chart-4: oklch(0.7 0 0);
+    --chart-5: oklch(0.9 0 0);
+    --radius: 0.25rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0 0 0);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.87 0 0);
+
+    /* Political Party Colors (Available everywhere) */
+    --political-red: #ba002e;
+    --political-white: #ffffff;
+    --political-green: #16803c;
+    --political-red-light: #f0525f;
+    --political-green-light: #2fb263;
+    --political-red-dark: #9f1527;
+    --political-green-dark: #006400;
+    --political-cream: #fcf9f8;
+    --political-ink: #102018;
+
+    /* Animation Timing */
+    --transition-slow: 0.5s ease-in-out;
+    --transition-medium: 0.3s ease-in-out;
+    --transition-fast: 0.15s ease-in-out;
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.145 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.145 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(1 0 0);
+    --primary-foreground: oklch(0 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.2 0 0);
+    --accent-foreground: oklch(1 0 0);
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.269 0 0);
+    --input: oklch(0.269 0 0);
+    --ring: oklch(1 0 0);
+    --chart-1: oklch(1 0 0);
+    --chart-2: oklch(0.8 0 0);
+    --chart-3: oklch(0.6 0 0);
+    --chart-4: oklch(0.4 0 0);
+    --chart-5: oklch(0.2 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(1 0 0);
+    --sidebar-primary-foreground: oklch(0 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.269 0 0);
+    --sidebar-ring: oklch(0.439 0 0);
+}
+
+@layer utilities {
+    .animate-pulse-cta {
+        animation: pulse-cta 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .animate-float-slow {
+        animation: float-slow 6s ease-in-out infinite;
+    }
+
+    .animate-reveal-text {
+        animation: reveal-text 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+
+    .bg-congress-stripe {
+        background-image: linear-gradient(90deg, #d21f32 0%, #d21f32 34%, #ffffff 34%, #ffffff 66%, #16803c 66%, #16803c 100%);
+    }
+
+    .bg-campaign-surface {
+        background:
+            linear-gradient(135deg, rgba(252, 249, 248, 0.98), rgba(246, 243, 242, 0.94)),
+            linear-gradient(90deg, rgba(186, 0, 46, 0.06), transparent 28%, rgba(0, 100, 0, 0.08));
+    }
+
+    .bg-campaign-hero {
+        background:
+            linear-gradient(115deg, rgba(0, 100, 0, 0.96) 0%, rgba(0, 100, 0, 0.88) 42%, rgba(186, 0, 46, 0.76) 100%),
+            linear-gradient(90deg, #006400, #ba002e);
+    }
+
+    .campaign-panel {
+        @apply border border-congress-outline/80 bg-white/90 shadow-[0_24px_80px_-56px_rgba(0,100,0,0.55)] backdrop-blur dark:border-white/10 dark:bg-slate-950/80;
+    }
+
+    .shadow-campaign {
+        box-shadow: 0 24px 80px -42px rgba(0, 100, 0, 0.5);
+    }
+
+    .shadow-patriotic {
+        box-shadow: 0 22px 70px -42px rgba(186, 0, 46, 0.5);
+    }
+
+    .font-display {
+        font-family: var(--font-display);
+    }
+
+    .font-nepali {
+        font-family: var(--font-nepali);
+    }
+
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+@layer components {
+    .field-input {
+        @apply h-14 w-full rounded-xl border border-congress-green-deep/10 bg-slate-50 px-4 text-base font-bold text-congress-green-deep outline-none transition focus:border-congress-red focus:bg-white focus:ring-4 focus:ring-congress-red/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:focus:bg-slate-950;
+    }
+
+    .field-icon {
+        @apply pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-congress-red;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.public-site {
+    max-width: 100vw;
+    overflow-x: clip;
+}
+
+.public-site *,
+.public-site *::before,
+.public-site *::after {
+    min-width: 0;
+}
+
+.public-site img,
+.public-site video,
+.public-site iframe,
+.public-site canvas,
+.public-site svg {
+    max-width: 100%;
+}
+
+.public-site h1,
+.public-site h2,
+.public-site h3,
+.public-site p,
+.public-site a,
+.public-site span,
+.public-site button,
+.public-site label,
+.public-site input,
+.public-site textarea,
+.public-site select {
+    overflow-wrap: anywhere;
+}
+
+.public-site input,
+.public-site textarea,
+.public-site select {
+    min-width: 0;
+}
+
+.public-site a,
+.public-site button {
+    max-width: 100%;
+}
+
+@media (max-width: 640px) {
+    .public-site h1 {
+        font-size: clamp(2.35rem, 12vw, 3.5rem) !important;
+        line-height: 1.03 !important;
+    }
+
+    .public-site h2 {
+        font-size: clamp(1.9rem, 9vw, 2.75rem) !important;
+        line-height: 1.08 !important;
+    }
+
+    .public-site [class*="tracking-"] {
+        letter-spacing: 0.08em !important;
+    }
+
+    .public-site .prose {
+        max-width: 100%;
+    }
+}
+
+.dark .public-site {
+    color: #f8fafc;
+}
+
+.dark .public-site [class*="text-[var(--political-green)]"],
+.dark .public-site [class*="text-congress-green-deep"],
+.dark .public-site [class*="text-slate-950"],
+.dark .public-site [class*="text-gray-900"] {
+    color: #f8fafc !important;
+}
+
+.dark .public-site [class*="text-gray-400"],
+.dark .public-site [class*="text-gray-500"],
+.dark .public-site [class*="text-slate-500"],
+.dark .public-site [class*="text-slate-600"] {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.dark .public-site input,
+.dark .public-site textarea,
+.dark .public-site select {
+    color: #f8fafc;
+}
+
+.dark .public-site input::placeholder,
+.dark .public-site textarea::placeholder {
+    color: rgba(255, 255, 255, 0.48);
+}
+
+@keyframes pulse-cta {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(204, 0, 0, 0.4);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(204, 0, 0, 0);
+    }
+}
+
+@keyframes float-slow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes reveal-text {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-up {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
